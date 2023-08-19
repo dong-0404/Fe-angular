@@ -1,0 +1,26 @@
+<div class="form-container">
+    <h2>Thêm người dùng mới</h2>
+    <div *ngIf="registrationSuccess" class="success-message">
+      Đăng kí thành công
+    </div>
+
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <label>
+        Username:
+        <input type="text" placeholder="Nhập username" formControlName="name">
+      </label>
+      <br><br>
+      <label>
+        Email:
+        <input type="email" placeholder="Nhập email" formControlName="email">
+      </label>
+      <br><br>
+      <label>
+        Mật khẩu:
+        <input type="password" placeholder="Nhập mật khẩu" formControlName="password">
+      </label>
+      <br><br>
+      <button type="submit" [disabled]="userForm.invalid">Thêm người dùng</button>
+    </form>
+  </div>
+  

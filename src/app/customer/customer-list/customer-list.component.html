@@ -1,0 +1,23 @@
+<div class="customer-list">
+  <h2>Danh sách Khách hàng</h2>
+  <table class="table">
+    <tr>
+      <th>Tên</th>
+      <th>Email</th>
+      <th>Điện thoại</th>
+      <th>Địa chỉ</th>
+      <th class="actions">Hành động</th>
+    </tr>
+    <tr *ngFor="let customer of customers">
+      <td>{{ customer.name }}</td>
+      <td>{{ customer.email }}</td>
+      <td>{{ customer.phone }}</td>
+      <td>{{ customer.address }}</td>
+      <td class="actions">
+        <button class="edit-button" [routerLink]="['/edit-customer', customer.id]">Sửa</button>
+        <button class="delete-button" (click)="deleteCustomer(customer.id)">Xoá</button>
+      </td>
+    </tr>
+  </table>
+  <button class="add-button" (click) = "navigateToAddCustomer()" >Thêm Khách hàng</button>
+</div>

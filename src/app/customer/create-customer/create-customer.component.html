@@ -1,0 +1,27 @@
+<div class="form-container">
+    <h2>Thêm mới khách hàng</h2>
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+      <label>
+        Họ tên:
+        <input type="text" formControlName="name">
+      </label>
+      <br><br>
+      <label>
+        Email:
+        <input type="email" formControlName="email">
+      </label>
+      <br><br>
+      <label>
+        Số điện thoại:
+        <input type="text" formControlName="phone">
+      </label>
+      <br><br>
+      <label>
+        Địa chỉ:
+        <input type="text" formControlName="address">
+      </label>
+      <br><br>
+      <button type="submit" [disabled]="customerForm.invalid">Thêm khách hàng</button>
+    </form>
+  </div>
+  

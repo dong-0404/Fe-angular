@@ -1,0 +1,17 @@
+<div class="form-container">
+  <h2>Cập nhật thông tin người dùng</h2>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <label>
+      Username:
+      <input type="text" placeholder="Nhập username" formControlName="name">
+    </label>
+    <br><br>
+    <label>
+      Email:
+      <input type="email" placeholder="Nhập email" formControlName="email">
+    </label>
+    <!-- Thêm các trường cần cập nhật -->
+    <br><br>
+    <button type="submit" [disabled]="userForm.invalid">Cập nhật thông tin</button>
+  </form>
+</div>

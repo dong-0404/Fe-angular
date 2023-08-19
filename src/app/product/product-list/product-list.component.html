@@ -1,0 +1,28 @@
+<!-- src/app/product-list/product-list.component.html -->
+
+<h2 class="product-list-title">Danh sách sản phẩm</h2>
+
+<table class="product-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Tên sản phẩm</th>
+      <th>Danh mục</th>
+      <th>Giá</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.category_id }}</td>
+      <td>{{ product.price | currency:'VND' }}</td>
+      <td><a [routerLink]="['/products', 'edit', product.id]">Sửa</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="add-product-button">
+  <a routerLink="/products/add" class="primary">Thêm sản phẩm</a>
+</div>

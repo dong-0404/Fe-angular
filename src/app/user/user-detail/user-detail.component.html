@@ -1,0 +1,13 @@
+<!-- user-detail.component.html -->
+<div class="container">
+    <h2>Thông tin chi tiết người dùng</h2>
+    <div *ngIf="user">
+      <p><strong>Tên người dùng:</strong>{{ user.name }} </p>
+      <p><strong>Email:</strong>{{ user.email }}</p>
+      <p><strong>Ngày tạo:</strong>{{ user.created_at }} </p>
+      <p><strong>Role:</strong> {{ user.role_id }}</p>
+      <!-- Thêm các thông tin khác của người dùng -->
+    </div>
+    <a routerLink="/User">Quay lại</a>
+  </div>
+  

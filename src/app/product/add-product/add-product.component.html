@@ -1,0 +1,24 @@
+<!-- src/app/add-product/add-product.component.html -->
+
+<h2 class="add-product-title">Thêm sản phẩm mới</h2>
+
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>Tên sản phẩm:</label>
+    <input type="text" class="form-control" formControlName="name" required>
+  </div>
+  <div class="form-group">
+    <label>Giá:</label>
+    <input type="number" class="form-control" formControlName="price" required>
+  </div>
+  <div class="form-group">
+    <label>Mô tả:</label>
+    <textarea class="form-control" formControlName="description" rows="4" required></textarea>
+  </div>
+  <!-- <div class="form-group">
+    <label>Ảnh sản phẩm:
+    <input type="file" (change)="onImageSelected($event)" formControlName="image">
+    </label>
+  </div> -->
+  <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">Thêm sản phẩm</button>
+</form>

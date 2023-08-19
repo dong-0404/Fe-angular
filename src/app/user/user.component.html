@@ -1,0 +1,36 @@
+<main>
+    <h2>List of Users</h2>
+    <table id="userTable">
+        <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Registration Date</th>
+            <th>Last Login Date</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let user of users">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.created_at}}</td>
+            <td>{{user.updated_at}}</td>
+            <td>{{user.role_id}}</td>
+            <td>
+                <button [routerLink]="['/View-user', user.id]" class="ViewBtn">View</button>
+                <button [routerLink]="['/user', user.id]" class="editBtn">Edit</button>
+                <button (click)="deleteUser(user.id)" class="deleteBtn">Delete</button>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Thêm các nút phân trang -->
+    <div id="pagination">
+        <!-- <button [disabled]="currentPage === 1" (click)="onPageChange(1)">First</button> -->
+        <!-- <button [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">Previous</button> -->
+        <span>Page {{currentPage}} / {{totalPages}}</span>
+        <!-- <button [disabled]="currentPage === totalPages" (click)="onPageChange(currentPage + 1)">Next</button> -->
+        <!-- <button [disabled]="currentPage === totalPages" (click)="onPageChange(totalPages)">Last</button> -->
+    </div>
+</main>
