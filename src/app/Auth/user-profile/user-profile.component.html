@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="float-left">User Profile</h3>
+                <button class="btn btn-secondary" >Change Password</button>
+              </div>
+          <div class="card-body">
+            <p><strong>Name:</strong> {{ users.user.name }}</p>
+            <p><strong>Email:</strong> {{ users.user.email }}</p>
+            <p><strong>Role:</strong> {{ users.role }}</p>
+          </div>
+          <div class="card-footer">
+            <button (click)="editUserProfile(users.user.id)" class="btn btn-primary">Edit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

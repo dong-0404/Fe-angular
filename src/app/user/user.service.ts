@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from './user.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from '../Auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class UserService {
 
   private apiUrl = 'http://localhost:8000/api';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/User`);
@@ -31,4 +32,7 @@ export class UserService {
   deleteUser(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/deleteUser/${id}`);
   }
+
+  
+
 }

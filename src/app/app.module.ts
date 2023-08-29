@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +17,9 @@ import { CreateCustomerComponent } from './customer/create-customer/create-custo
 import { EditCustomerComponent } from './customer/edit-customer/edit-customer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './Auth/login/login.component';
-import { RegisterComponent } from './Auth/register/register.component';
+import { UserProfileComponent } from './Auth/user-profile/user-profile.component';
+import { AuthInterceptor } from './Auth/auth.interceptor';
+import { EditUserProfileComponent } from './Auth/edit-user-profile/edit-user-profile.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { RegisterComponent } from './Auth/register/register.component';
     EditCustomerComponent,
     DashboardComponent,
     LoginComponent,
-    RegisterComponent,
+    UserProfileComponent,
+    EditUserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,11 @@ import { RegisterComponent } from './Auth/register/register.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-header">
+      Update User Profile
+    </div>
+    <div class="card-body">
+      <form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter your name">
+          <!-- <div *ngIf="userProfileForm.get('name')?.invalid && (userProfileForm.get('name')?.dirty || userProfileForm.get('name')?.touched)" class="text-danger">
+            Name is required and must be at least 2 characters.
+          </div> -->
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter your email">
+          <!-- <div *ngIf="userProfileForm.get('email')?.invalid && (userProfileForm.get('email')?.dirty || userProfileForm.get('email')?.touched)" class="text-danger">
+            Valid email is required.
+          </div> -->
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="userProfileForm.invalid">Update Profile</button>
+      </form>
+    </div>
+  </div>
+  
