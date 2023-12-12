@@ -1,24 +1,28 @@
 <!-- src/app/add-product/add-product.component.html -->
+<!-- <h2 class="add-product-title">Thêm sản phẩm mới</h2> -->
 
-<h2 class="add-product-title">Thêm sản phẩm mới</h2>
-
-<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="product-form">
   <div class="form-group">
-    <label>Tên sản phẩm:</label>
-    <input type="text" class="form-control" formControlName="name" required>
+    <label for="name">Tên sản phẩm:</label>
+    <input type="text" id="name" class="form-control" formControlName="name" required>
   </div>
   <div class="form-group">
-    <label>Giá:</label>
-    <input type="number" class="form-control" formControlName="price" required>
+    <label for="category">Danh mục:</label>
+    <input type="text" id="category" class="form-control" formControlName="category_id" required>
   </div>
   <div class="form-group">
-    <label>Mô tả:</label>
-    <textarea class="form-control" formControlName="description" rows="4" required></textarea>
+    <label for="price">Giá:</label>
+    <input type="number" id="price" class="form-control" formControlName="price" required>
+  </div>
+  <div class="form-group">
+    <label for="description">Mô tả:</label>
+    <textarea id="description" class="form-control" formControlName="description" rows="4" required></textarea>
   </div>
   <!-- <div class="form-group">
-    <label>Ảnh sản phẩm:
-    <input type="file" (change)="onImageSelected($event)" formControlName="image">
-    </label>
+    <label for="image">Ảnh sản phẩm:</label>
+    <input type="file" id="image" (change)="onImageSelected($event)" formControlName="image" accept="image/*">
   </div> -->
   <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">Thêm sản phẩm</button>
 </form>
+
+

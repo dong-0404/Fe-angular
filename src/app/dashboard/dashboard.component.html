@@ -1,14 +1,15 @@
-<div class="dashboard">
-  <h2>Dashboard</h2>
-  <nav>
-    <ul>
-      <li><a routerLink="/Admin/user-profile">Profile</a></li>
-      <li><a routerLink="/Admin/User">Quản lí user</a></li>
-      <li><a routerLink="/Admin/Customer">Quản lí customer</a></li>
-      <li><a routerLink="/Admin/products">Quản lí product</a></li>
-      <li><a routerLink="/products">Quản lí đơn hàng</a></li>
-      <li><a (click)="logout()">Đăng xuất</a></li>
-    </ul>
-  </nav>
-  <router-outlet></router-outlet> 
-</div>
+   <div class="dashboard">
+    <h2>Dashboard</h2>
+    <nav>
+      <ul>
+        <li><a routerLink="/user-profile">Profile</a></li>
+        <li><a routerLink="/Admin/User">Quản lí user</a></li>
+        <li><a routerLink="/Admin/Customer">Quản lí customer</a></li>
+        <li><a routerLink="/Admin/products">Quản lí product</a></li>
+        <li><a routerLink="/Admin/order">Quản lí đơn hàng</a></li>
+        <li><a (click)="logout()">Đăng xuất</a></li>
+      </ul>
+    </nav>
+    <router-outlet></router-outlet> 
+  </div>
+

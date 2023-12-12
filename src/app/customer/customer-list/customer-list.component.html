@@ -19,5 +19,36 @@
       </td>
     </tr>
   </table>
-  <button class="add-button" (click) = "navigateToAddCustomer()" >Thêm Khách hàng</button>
+<button type="button" class="btn btn-primary" (click)="openModal()" data-bs-toggle="modal" data-bs-target="#myModal">
+  Thêm sản phẩm
+</button>
+<div class="pagination" *ngIf=" lastPage > 1">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">Trang trước</button>
+  <span class="total-pages">{{ currentPage }} / {{ lastPage }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === lastPage">Trang tiếp theo</button>
+</div>
+</div>
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Thêm mới Customer</h4>
+        <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <app-create-customer></app-create-customer>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
 </div>

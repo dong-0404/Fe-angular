@@ -1,9 +1,8 @@
 <div class="form-container">
     <h2>Thêm người dùng mới</h2>
-    <div *ngIf="registrationSuccess" class="success-message">
+    <!-- <div *ngIf="registrationSuccess" class="success-message">
       Đăng kí thành công
-    </div>
-
+    </div> -->
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
       <label>
         Username:

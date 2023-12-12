@@ -26,6 +26,9 @@ export class UserProfileComponent implements OnInit{
   }
   }
   editUserProfile(userId: number) {
-    this.router.navigate(['/Admin/user-profile', userId]);
+    this.router.navigate(['/user-profile', userId]);
+  }
+  changePassword() {
+    this.router.navigate(['/Admin/changePassword']);
   }
 }

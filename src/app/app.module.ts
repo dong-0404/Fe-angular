@@ -20,6 +20,18 @@ import { LoginComponent } from './Auth/login/login.component';
 import { UserProfileComponent } from './Auth/user-profile/user-profile.component';
 import { AuthInterceptor } from './Auth/auth.interceptor';
 import { EditUserProfileComponent } from './Auth/edit-user-profile/edit-user-profile.component';
+import { ChangePasswordComponent } from './Auth/change-password/change-password.component';
+import { EditProductComponent } from './product/edit-product/edit-product.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ToastrModule } from 'ngx-toastr';
+import { OrderListComponent } from './order/order-list/order-list.component';
+import { OrderDetailComponent } from './order/order-detail/order-detail.component';
+import { AddNewItemComponent } from './order/add-new-item/add-new-item.component';
+
 
 @NgModule({
   declarations: [
@@ -37,19 +49,30 @@ import { EditUserProfileComponent } from './Auth/edit-user-profile/edit-user-pro
     LoginComponent,
     UserProfileComponent,
     EditUserProfileComponent,
+    ChangePasswordComponent,
+    EditProductComponent,
+    OrderListComponent,
+    OrderDetailComponent,
+    AddNewItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatDialogModule,
+    ToastrModule.forRoot(),
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

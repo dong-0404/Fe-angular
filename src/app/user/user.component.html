@@ -10,7 +10,7 @@
             <th>Role</th>
             <th>Actions</th>
         </tr>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of user">
             <td>{{user.id}}</td>
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
@@ -19,18 +19,64 @@
             <td>{{user.role_id}}</td>
             <td>
                 <button [routerLink]="['/View-user', user.id]" class="ViewBtn">View</button>
-                <button [routerLink]="['/user', user.id]" class="editBtn">Edit</button>
-                <button (click)="deleteUser(user.id)" class="deleteBtn">Delete</button>
+                <button [routerLink]="['/user', user.id]" type="button" data-bs-toggle="modal" data-bs-target="#myModal"  (click)="openModal1()" class="editBtn">Edit</button>
+                <button  (click)="deleteUser(user.id)" class="deleteBtn">Delete</button>
             </td>
         </tr>
+        <button type="button" class="btn btn-primary" (click)="openModal()" data-bs-toggle="modal" data-bs-target="#myModal">
+            Thêm mới user
+          </button>
     </table>
-
-    <!-- Thêm các nút phân trang -->
-    <div id="pagination">
-        <!-- <button [disabled]="currentPage === 1" (click)="onPageChange(1)">First</button> -->
-        <!-- <button [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">Previous</button> -->
-        <span>Page {{currentPage}} / {{totalPages}}</span>
-        <!-- <button [disabled]="currentPage === totalPages" (click)="onPageChange(currentPage + 1)">Next</button> -->
-        <!-- <button [disabled]="currentPage === totalPages" (click)="onPageChange(totalPages)">Last</button> -->
-    </div>
+        <div class="pagination" *ngIf="lastPage > 1">
+            <button (click)="prevPage()" [disabled]="currentPage === 1">Trang trước</button>
+            <span class="total-pages">{{ currentPage }} / {{ lastPage }}</span>
+            <button (click)="nextPage()" [disabled]="currentPage === lastPage">Trang tiếp theo</button>
+        </div>
 </main>
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Thêm mới sản phẩm</h4>
+          <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <app-create-user></app-create-user>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="myModal1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Thêm mới sản phẩm</h4>
+          <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <app-user-detail></app-user-detail>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

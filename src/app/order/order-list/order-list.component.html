@@ -1,0 +1,47 @@
+
+
+  <!-- src/app/order-list/order-list.component.html -->
+<div class="container">
+    <h2>Danh sách đơn hàng</h2>
+    <!-- Thêm phần tìm kiếm ở đây -->
+    <div class="search-bar">
+      <input type="text" placeholder="Tìm kiếm theo Order ID" [(ngModel)]="orderId">
+      <input type="text" placeholder="Tìm kiếm theo User ID" [(ngModel)]="userId">
+      <input type="text" placeholder="Tìm kiếm theo Customer ID" [(ngModel)]="customerId">
+      <button (click)="searchOrders()">Tìm kiếm</button>
+    </div>
+    
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID Order  </th>
+          <th>Customer</th>
+          <th>User</th>
+          <th>Status</th>
+          <th>Total_Amount</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of Orders">
+          <td>{{ order.id }}</td>
+          <td>{{ order.customer_name }}</td>
+          <td>{{ order.user_name }}</td>
+          <td>{{ order.status_name }}</td>
+          <td>{{ order.total_amount }}</td>
+          <td>
+            <button [routerLink]="['/Order', order.id]" class="btn btn-info btn-sm">Xem</button>
+            <button class="btn btn-primary btn-sm">Sửa</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteOrder(order.id)">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination" *ngIf="lastPage > 1">
+        <button (click)="prevPage()" [disabled]="currentPage === 1">Trang trước</button>
+        <span class="total-pages">{{ currentPage }} / {{ lastPage }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage === lastPage">Trang tiếp theo</button>
+    </div>  
+  </div>
+  
+  

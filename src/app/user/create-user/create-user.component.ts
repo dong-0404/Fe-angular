@@ -2,6 +2,7 @@ import { Component,OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/user/user.service';
 import { User } from '../user.interface';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-user',
@@ -10,13 +11,12 @@ import { User } from '../user.interface';
 })
 export class CreateUserComponent implements OnInit {
   userForm: FormGroup;
-  registrationSuccess: boolean = false // taoj trang thai dang ky
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(private fb: FormBuilder, private userService: UserService, private toasrt:ToastrService) {
     this.userForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required]]
     });
   }
 
@@ -31,11 +31,16 @@ export class CreateUserComponent implements OnInit {
     const userData = this.userForm.value;
 
     this.userService.createUser(userData)
-    .subscribe(response => {
+    .subscribe((response) => {
       console.log(response);
-      this.registrationSuccess = true; // dang ki thanh cong
+      this.toasrt.success('Created Successfully', 'Notice!');
       setTimeout(()=> {
-        this.registrationSuccess = false;
+        location.reload();
+      }, 2000);
+    },
+    (error) => {
+      this.toasrt.error('Can not creat new user', 'Error');
+      setTimeout(() => {
         location.reload();
       }, 2000);
     })

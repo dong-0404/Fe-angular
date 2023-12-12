@@ -13,8 +13,8 @@ export class UserService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiUrl}/User`);
+  getUsers(page: number): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}/User?page=${page}`);
   }
 
   getUserById(id: number): Observable<User> {

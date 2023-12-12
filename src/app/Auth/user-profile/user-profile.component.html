@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="float-left">User Profile</h3>
-                <button class="btn btn-secondary" >Change Password</button>
+                <button (click)="changePassword()" class="btn btn-secondary"> Change Password</button>
               </div>
           <div class="card-body">
             <p><strong>Name:</strong> {{ users.user.name }}</p>

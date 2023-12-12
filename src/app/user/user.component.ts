@@ -2,6 +2,7 @@ import { UserService } from './user.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from './user.interface';
 import { PagingService } from '../paging.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user',
@@ -10,29 +11,69 @@ import { PagingService } from '../paging.service';
   providers: [UserService]
 })
 export class UserComponent implements OnInit{
-  users: User[] = [];
+  user: User[] = [];
 
-  currentPage: number = 1;
-  pageSize: number = 7;
-  totalItems: number = 0;
-  totalPages: number = 0;
+  currentPage = 1;
+  lastPage = 1;
   constructor(
     private userService: UserService,
-    private pagingService: PagingService
+    private pagingService: PagingService,
+    private toastr: ToastrService
     ) {}
 
   ngOnInit(): void {
-    this.userService.getUsers()
-    .subscribe(users => {
-      console.log(users);
-      this.users = users;
+    this.userService.getUsers(this.currentPage)
+    .subscribe((users:any) => {
+      this.user = users.data
+      this.currentPage = users.current_page;
+      this.lastPage = users.last_page;
+      console.log(this.user);
     })
   }
   deleteUser(id:number): void {
     this.userService.deleteUser(id)
     .subscribe(() => {
-      this.users = this.users.filter(user => user.id !== id);
-      console.log('User deleted successfully');
+      this.user = this.user.filter(user => user.id !== id);
+      this.toastr.success('deleted successfully', 'Notice');
+      console.log(this.toastr);
     });
   }
+  prevPage():void {
+    if(this.currentPage > 1) {
+      this.currentPage--;
+      this.ngOnInit();
+    }
+  }
+  nextPage():void {
+    if(this.currentPage < this.lastPage) {
+      this.currentPage++;
+      this.ngOnInit();
+    }
+  }
+  openModal(): void {
+    const myModal = document.getElementById('myModal');
+    
+    if (myModal !== null) {
+      myModal.style.display = 'block';
+    }
+  }
+  openModal1(): void {
+    const myModal = document.getElementById('myModal1');
+    
+    if (myModal !== null) {
+      myModal.style.display = 'block';
+    }
+  }
+  
+  closeModal():void {
+    const myModal = document.getElementById('myModal');
+    
+    if (myModal !== null) {
+      myModal.style.display = 'none';
+    }
+  }
+  // showSuccess() {
+  //   this.toastr.success('Hello world!', 'Toastr fun!');
+  //   console.log(this.toastr.success);
+  // }
 }

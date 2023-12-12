@@ -1,28 +1,68 @@
-<!-- src/app/product-list/product-list.component.html -->
-
 <h2 class="product-list-title">Danh sách sản phẩm</h2>
 
-<table class="product-table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Tên sản phẩm</th>
-      <th>Danh mục</th>
-      <th>Giá</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of products">
-      <td>{{ product.id }}</td>
-      <td>{{ product.name }}</td>
-      <td>{{ product.category_id }}</td>
-      <td>{{ product.price | currency:'VND' }}</td>
-      <td><a [routerLink]="['/products', 'edit', product.id]">Sửa</a></td>
-    </tr>
-  </tbody>
-</table>
+<div class="product-list-container">
+  <table class="product-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tên sản phẩm</th>
+        <th>Danh mục</th>
+        <th>Giá</th>
+        <th>Ảnh</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.category_id }}</td>
+        <td>{{ product.price | currency:'VND' }}</td>
+        <td><img [src]="product.image" alt="{{ product.name }}" class="product-image"></td>
+        <td>
+          <a [routerLink]="['/edit-product', product.id]" class="edit-link">Sửa</a>
+          <button (click)="deleteProduct(product.id)" class="delete-button">Xóa</button>
+          <!-- Các button khác nếu cần -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<button type="button" class="btn btn-primary" (click)="openModal()" data-bs-toggle="modal" data-bs-target="#myModal">
+  Thêm sản phẩm
+</button>
+<!-- Trang phân trang -->
+<div class="pagination" *ngIf="lastPage > 1">
+  <button (click)="previous()" [disabled]="currentPage === 1">Trang trước</button>
+  <span class="total-pages">{{ currentPage }} / {{ lastPage }}</span>
+  <button (click)="next()" [disabled]="currentPage === lastPage">Trang tiếp theo</button>
+</div>
 
-<div class="add-product-button">
+<!-- <div class="add-product-button">
   <a routerLink="/products/add" class="primary">Thêm sản phẩm</a>
+</div> -->
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Thêm mới sản phẩm</h4>
+        <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <app-add-product></app-add-product>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
 </div>

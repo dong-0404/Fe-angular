@@ -1,72 +1,121 @@
-/* Reset some default styles */
-body, h1, h2, h3, p {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-}
-
-header {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-}
-
+/* Định dạng trang web chính */
 main {
-    margin: 20px;
-    width: 100%;
-    max-width: 900px; /* Set maximum width for the main content */
-}
-
-button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button.addBtn {
-    background-color: #4caf50;
-    color: white;
-}
-
-button.editBtn {
-    background-color: #ffc107;
-    color: white;
-}
-
-button.deleteBtn {
-    background-color: #f44336;
-    color: white;
-}
-button.viewBtn {
-    background-color: aqua;
-    color:white;
-}
-
-table {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  /* Định dạng bảng */
+  #userTable {
     width: 100%;
     border-collapse: collapse;
-    background-color: white;
-}
-
-th, td {
-    border: 1px solid #ccc;
+    margin-top: 20px;
+  }
+  
+  #userTable th, #userTable td {
     padding: 10px;
-    text-align: center;
-}
-
-th {
+    border: 1px solid #ddd;
+  }
+  
+  #userTable th {
     background-color: #f2f2f2;
+  }
+  
+  /* Định dạng nút bấm */
+  button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #ff5733; /* Thay đổi màu này thành màu bạn muốn */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button.btn-primary:hover {
+    background-color: red;
+  }
+  
+  /* Định dạng phân trang */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Hiển thị tổng số trang */
+  .total-pages {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 18px;
+  }
+  /* Màu sắc cho nút bấm có class .ViewBtn */
+button.ViewBtn {
+    background-color: #3498db; /* Màu sắc cho nút View */
+    color: #fff;
+  }
+button.btn-primary {
+  background-color: #3498db;
+  color: #fff;
 }
-
-
+  
+  button.ViewBtn:hover {
+    background-color: #2980b9; /* Màu sắc khi di chuột qua */
+  }
+  
+  /* Màu sắc cho nút bấm có class .editBtn */
+  button.editBtn {
+    background-color: #2ecc71; /* Màu sắc cho nút Edit */
+    color: #fff;
+  }
+  
+  button.editBtn:hover {
+    background-color: #27ae60; /* Màu sắc khi di chuột qua */
+  }
+  
+  /* Màu sắc cho nút bấm có class .deleteBtn */
+  button.deleteBtn {
+    background-color: #e74c3c; /* Màu sắc cho nút Delete */
+    color: #fff;
+  }
+  
+  button.deleteBtn:hover {
+    background-color: #c0392b; /* Màu sắc khi di chuột qua */
+  }
+  
+  /* Màu sắc cho nút phân trang */
+  .pagination button {
+    background-color: #007bff; /* Màu sắc cho nút phân trang */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .pagination button:hover {
+    background-color: #e55028; /* Màu sắc khi di chuột qua */
+  }
+  
+  /* Màu sắc cho nút phân trang bị vô hiệu hóa */
+  .pagination button:disabled {
+    background-color: #ccc; /* Màu sắc khi nút bấm bị vô hiệu hóa */
+    cursor: not-allowed;
+  }
+  
+  

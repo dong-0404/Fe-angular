@@ -2,6 +2,7 @@ import { CustomerService } from './../customer.service';
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../customer.interface';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-customer-list',
   templateUrl: './customer-list.component.html',
@@ -10,14 +11,18 @@ import { Router } from '@angular/router';
 export class CustomerListComponent implements OnInit {
 
   customers: Customer[] = [];
-  constructor(private customerService: CustomerService, private router: Router 
+  currentPage!:number;
+  lastPage!:number;
+  constructor(private customerService: CustomerService, private router: Router, private toasrt:ToastrService 
   ) {
 
   }
   ngOnInit(): void {
-    this.customerService.getCustomers()
-    .subscribe(customers =>{
-      this.customers = customers;
+    this.customerService.getCustomers(this.currentPage)
+    .subscribe((customers:any) =>{
+      this.customers = customers.data;
+      this.currentPage = customers.current_page;
+      this.lastPage = customers.last_page;
     });
   }
 
@@ -26,13 +31,43 @@ export class CustomerListComponent implements OnInit {
   }
 
   deleteCustomer(id: number): void {
+    if(confirm("Are you sure to delete")){
     this.customerService.deleteCustomer(id)
     .subscribe(()=> {
       this.customers = this.customers.filter(customer => customer.id !== id);
-      console.log('Deleted succesfully');
+      this.toasrt.success('Deleted Successfully', 'Notice!');
+      // console.log('Deleted succesfully');
     })
+  }
   }
   editCustomer(customerId: number): void {
     this.router.navigate(['update-customer', customerId]);
+  }
+  prevPage():void {
+    if(this.currentPage > 1) {
+      this.currentPage--;
+      this.ngOnInit();
+    }
+  }
+  nextPage():void {
+    if(this.currentPage < this.lastPage) {
+      this.currentPage++;
+      this.ngOnInit();
+    }
+  }
+  openModal(): void {
+    const myModal = document.getElementById('myModal');
+    
+    if (myModal !== null) {
+      myModal.style.display = 'block';
+    }
+  }
+  
+  closeModal():void {
+    const myModal = document.getElementById('myModal');
+    
+    if (myModal !== null) {
+      myModal.style.display = 'none';
+    }
   }
 }

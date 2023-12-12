@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toasrt:ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -49,10 +51,11 @@ export class LoginComponent implements OnInit {
           console.log(roles);
           if(roles.includes('manager') || roles.includes('employee')) {
             this.router.navigate(['Admin']);
+            this.toasrt.success('Login Successfully','Notice!');
           }
         },
         (err) => {
-          console.log(err);
+          this.toasrt.error('Account or password is incorrect','Error!');
         }
       );
   }

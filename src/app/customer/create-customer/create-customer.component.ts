@@ -37,14 +37,10 @@ export class CreateCustomerComponent implements OnInit{
 
     const customerData = this.customerForm.value;
     this.customerService.createCustomer(customerData)
-    .subscribe((response) => {
+    .subscribe((response:any) => {
       console.log(response);
-
-      this.router.navigate(['/Customer']);
-    },
-    (error)=> {
-      console.error(error);
-    })
+    }),
+    this.router.navigate(['/Admin/Customer']);
   }
 
 }

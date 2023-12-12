@@ -10,8 +10,8 @@ export class CustomerService {
   private apiUrl = 'http://localhost:8000/api';
   constructor(private http: HttpClient) { }
 
-  getCustomers(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(`${this.apiUrl}/Customer`);
+  getCustomers(page:number): Observable<Customer[]> {
+    return this.http.get<Customer[]>(`${this.apiUrl}/Customer?page=${page}`);
   }
   createCustomer(customerData: any): Observable<Customer> {
     return this.http.post<Customer>(`${this.apiUrl}/createCustomer`, customerData);

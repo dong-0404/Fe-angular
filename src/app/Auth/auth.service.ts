@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {Observable } from 'rxjs';
 import { User } from '../user/user.interface';
 import { UserService } from '../user/user.service';
 import { Router } from '@angular/router';
@@ -54,6 +54,14 @@ export class AuthService {
 
   updateUserProfile(id:number, profileData:any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/updateUserProfile/${id}`, profileData);
+  }
+  changePassword(currentPassword:string, newPassword:string):Observable<any> {
+    const data = {
+      current_password: currentPassword,
+      new_password: newPassword,
+      new_password_confirmation: newPassword
+    }
+    return this.http.post(`${this.apiUrl}/changePassword`, data);
   }
 
   setUserRoles(roles: string[]) {

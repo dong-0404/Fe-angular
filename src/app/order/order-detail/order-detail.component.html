@@ -1,0 +1,51 @@
+<div class="order-details">
+    <h2 class="order-details-title">Chi Tiết Đơn Hàng</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Sản Phẩm</th>
+          <th>Số Lượng</th>
+          <th>Thao Tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of order">
+          <td>{{ item.id }}</td>
+          <td>{{ item.product_name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>
+            <button class="btn btn-edit">Sửa</button>
+            <button (click)="DeleteOrderItem(item.id)" class="btn btn-delete">Xoá</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+        <button (click)="addProductToOrder()" class="btn btn-add">Thêm sản phẩm</button>
+    </div>
+  </div>
+  <!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Thêm mới sản phẩm</h4>
+        <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <app-create-user></app-create-user>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+  

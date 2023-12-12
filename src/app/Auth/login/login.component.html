@@ -1,24 +1,15 @@
-<form class="form-horizontal" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <fieldset>
-      <div class="control-group">
-        <label class="control-label" for="email">Email</label>
-        <div class="controls">
-          <input type="text" id="email" name="email" placeholder="" class="input-xlarge" formControlName="email">
-        </div>
-      </div>
-  
-      <div class="control-group">
-        <label class="control-label" for="password">Password</label>
-        <div class="controls">
-          <input type="password" id="password" name="password" placeholder="" class="input-xlarge" formControlName="password">
-        </div>
-      </div>
-  
-      <div class="control-group">
-        <div class="controls">
-          <button class="btn btn-success" [disabled]="loginForm.invalid">Login</button>
-        </div>
-      </div>
-    </fieldset>
+<div class="login-container">
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2>Login Admin</h2>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" id="email" name="email" class="form-control" formControlName="email">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" class="form-control" formControlName="password">
+    </div>
+    <button class="btn" [disabled]="loginForm.invalid">Login</button>
+    <a routerLink="/register">Register</a>
   </form>
-  
+</div>
