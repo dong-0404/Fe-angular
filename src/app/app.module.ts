@@ -23,10 +23,10 @@ import { EditUserProfileComponent } from './Auth/edit-user-profile/edit-user-pro
 import { ChangePasswordComponent } from './Auth/change-password/change-password.component';
 import { EditProductComponent } from './product/edit-product/edit-product.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatDialogModule} from '@angular/material/dialog';
+// import {MatIconModule} from '@angular/material/icon';
+// import {MatButtonModule} from '@angular/material/button';
+// import {MatToolbarModule} from '@angular/material/toolbar';
+// import {MatDialogModule} from '@angular/material/dialog';
 import { ToastrModule } from 'ngx-toastr';
 import { OrderListComponent } from './order/order-list/order-list.component';
 import { OrderDetailComponent } from './order/order-detail/order-detail.component';
@@ -62,10 +62,10 @@ import { AddNewItemComponent } from './order/add-new-item/add-new-item.component
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatDialogModule,
+    // MatButtonModule,
+    // MatIconModule,
+    // MatToolbarModule,
+    // MatDialogModule,
     ToastrModule.forRoot(),
   ],
   providers: [{

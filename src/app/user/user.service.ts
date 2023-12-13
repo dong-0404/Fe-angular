@@ -11,7 +11,7 @@ export class UserService {
 
   private apiUrl = 'http://localhost:8000/api';
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient) { }
 
   getUsers(page: number): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/User?page=${page}`);

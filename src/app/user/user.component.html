@@ -19,7 +19,7 @@
             <td>{{user.role_id}}</td>
             <td>
                 <button [routerLink]="['/View-user', user.id]" class="ViewBtn">View</button>
-                <button [routerLink]="['/user', user.id]" type="button" data-bs-toggle="modal" data-bs-target="#myModal"  (click)="openModal1()" class="editBtn">Edit</button>
+                <button [routerLink]="['/user', user.id]" type="button" data-bs-toggle="modal" data-bs-target="#myModal" class="editBtn">Edit</button>
                 <button  (click)="deleteUser(user.id)" class="deleteBtn">Delete</button>
             </td>
         </tr>
@@ -47,29 +47,6 @@
         <!-- Modal body -->
         <div class="modal-body">
           <app-create-user></app-create-user>
-        </div>
-  
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
-        </div>
-  
-      </div>
-    </div>
-  </div>
-  <div class="modal" id="myModal1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-  
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Thêm mới sản phẩm</h4>
-          <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal"></button>
-        </div>
-  
-        <!-- Modal body -->
-        <div class="modal-body">
-          <app-user-detail></app-user-detail>
         </div>
   
         <!-- Modal footer -->

@@ -15,6 +15,5 @@ export class AppComponent {
   showanimation() {
     console.log(1);
     this.toasrt.success("Success");
-
   }
 }

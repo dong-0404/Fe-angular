@@ -43,7 +43,7 @@ const routes: Routes = [
 
   {path: "edit-product/:id", component: EditProductComponent},
   {path: "user-profile/:id", component:EditUserProfileComponent },
-  { path: "add-user", component: CreateUserComponent,canActivate: [adminGuard] },
+  // { path: "add-user", component: CreateUserComponent,canActivate: [adminGuard] },
   { path: "View-user/:id", component: UserDetailComponent },
   { path: "user/:id", component: EditUserComponent },
   {path: 'Order/:id', component: OrderDetailComponent},

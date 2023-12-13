@@ -17,7 +17,6 @@ export class UserComponent implements OnInit{
   lastPage = 1;
   constructor(
     private userService: UserService,
-    private pagingService: PagingService,
     private toastr: ToastrService
     ) {}
 
@@ -35,7 +34,7 @@ export class UserComponent implements OnInit{
     .subscribe(() => {
       this.user = this.user.filter(user => user.id !== id);
       this.toastr.success('deleted successfully', 'Notice');
-      console.log(this.toastr);
+      console.log(this.user);
     });
   }
   prevPage():void {
@@ -57,14 +56,6 @@ export class UserComponent implements OnInit{
       myModal.style.display = 'block';
     }
   }
-  openModal1(): void {
-    const myModal = document.getElementById('myModal1');
-    
-    if (myModal !== null) {
-      myModal.style.display = 'block';
-    }
-  }
-  
   closeModal():void {
     const myModal = document.getElementById('myModal');
     
@@ -72,8 +63,4 @@ export class UserComponent implements OnInit{
       myModal.style.display = 'none';
     }
   }
-  // showSuccess() {
-  //   this.toastr.success('Hello world!', 'Toastr fun!');
-  //   console.log(this.toastr.success);
-  // }
 }
